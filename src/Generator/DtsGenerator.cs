@@ -5,6 +5,7 @@ using System.Text;
 using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.TextTemplating.VSHost;
+using Microsoft.VisualStudio.Shell;
 
 namespace TypeScriptDefinitionGenerator
 {
@@ -30,21 +31,36 @@ namespace TypeScriptDefinitionGenerator
 
         protected override byte[] GenerateCode(string inputFileName, string inputFileContent)
         {
-            ProjectItem item = (Dte as DTE2).Solution.FindProjectItem(inputFileName);
+            ProjectItem item = null;
             originalExt = Path.GetExtension(inputFileName);
-            if (item != null)
-            {
-                try
-                {
-                    var dts = GenerationService.GenerateFromProjectItem(item);
 
+            try
+            {
+                // All EnvDTE / VS COM calls must be performed on the UI thread. Use ThreadHelper
+                // to switch to the main thread and perform FindProjectItem and subsequent
+                // CodeModel access there to avoid COM/CLR interop corruption.
+                ThreadHelper.JoinableTaskFactory.Run(async () =>
+                {
+                    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
+                    item = (Dte as DTE2).Solution.FindProjectItem(inputFileName);
+
+                    if (item != null)
+                    {   
+                        // Keep generation on the UI thread because GenerationService uses EnvDTE CodeModel
+                        // and ProjectItem properties which require the UI thread.
+                        var dts = GenerationService.GenerateFromProjectItem(item);
+                    }
+                });
+
+                if (item != null)
+                {
                     return null;
                 }
-                catch (Exception ex)
-                {
-                    VSHelpers.WriteOnOutputWindow($"Error during custom tool generation for {inputFileName}: {ex}");
-                }
-                    
+            }
+            catch (Exception ex)
+            {
+                VSHelpers.WriteOnOutputWindow($"Error during custom tool generation for {inputFileName}: {ex}");
             }
 
             return new byte[0];
