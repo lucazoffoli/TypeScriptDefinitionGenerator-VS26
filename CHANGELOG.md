@@ -10,6 +10,9 @@ download in the
 
 These are the changes to each version that has been released
 on the official Visual Studio extension gallery.
+## 1.6
+- [x] Change icon to evidence support for Visual Studio 2026
+- [x] Specify the fork from TypeScriptDefinitionGenerator (Mads Kristensen)
 
 ## 1.5
 - [x] Support for Visual Studio 2026
