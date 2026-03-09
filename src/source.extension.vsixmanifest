@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-	<Metadata>
-		<Identity Id="8751f103-e71b-4491-b4a2-791dfec437be" Version="1.6" Language="en-US" Publisher="Luca Zoffoli" />
-		<DisplayName>TypeScript Definition Generator 2026 (fork)</DisplayName>
-		<Description xml:space="preserve">Fork of TypeScriptDefinitionGenerator (Mads Kristensen) for VS 26
+    <Metadata>
+        <Identity Id="8751f103-e71b-4491-b4a2-791dfec437be" Version="1.7" Language="en-US" Publisher="Luca Zoffoli" />
+        <DisplayName>TypeScript Definition Generator 2026 (fork)</DisplayName>
+        <Description xml:space="preserve">Fork of TypeScriptDefinitionGenerator (Mads Kristensen) for VS 26
 Creates and synchronizes TypeScript Definition files (d.ts) from C#/VB model classes to build strongly typed web application where the server- and client-side models are in sync. Works on all .NET project types
 SUPPORT VS 2026</Description>
-		<MoreInfo>https://github.com/lucazoffoli/TypeScriptDefinitionGenerator-VS26</MoreInfo>
-		<License>Resources\LICENSE</License>
-		<ReleaseNotes>https://github.com/lucazoffoli/TypeScriptDefinitionGenerator-VS26/blob/master/CHANGELOG.md</ReleaseNotes>
-		<Icon>Resources\Icon.png</Icon>
-		<PreviewImage>Resources\Icon.png</PreviewImage>
-		<Tags>typescript, d.ts, model</Tags>
-	</Metadata>
-	<Installation>
-		<InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,19.0)">
-			<ProductArchitecture>amd64</ProductArchitecture>
-		</InstallationTarget>
-	</Installation>
-	<Prerequisites>
-		<Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
-	</Prerequisites>
-	<Assets>
-		<Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
-		<Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="website.pkgdef" />
-		<Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
-	</Assets>
+        <MoreInfo>https://github.com/lucazoffoli/TypeScriptDefinitionGenerator-VS26</MoreInfo>
+        <License>Resources\LICENSE</License>
+        <ReleaseNotes>https://github.com/lucazoffoli/TypeScriptDefinitionGenerator-VS26/blob/master/CHANGELOG.md</ReleaseNotes>
+        <Icon>Resources\Icon.png</Icon>
+        <PreviewImage>Resources\Icon.png</PreviewImage>
+        <Tags>typescript, d.ts, model</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,19.0)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+    </Installation>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="website.pkgdef" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+    </Assets>
 </PackageManifest>
